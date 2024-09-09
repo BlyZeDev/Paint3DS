@@ -8,6 +8,8 @@ int main(int argc, char **argv)
 	const int MAX_COLOR = 47;
 	
 	gfxInitDefault();
+	hidInit();
+	mcuHwcInit();
 
 	PrintConsole topScreen, bottomScreen;
 
@@ -15,9 +17,9 @@ int main(int argc, char **argv)
 	consoleInit(GFX_BOTTOM, &bottomScreen);
 	
 	consoleSelect(&bottomScreen);
-	printf("\x1b[0;0HSwitch between Pen and Eraser: \x1b[32mA\x1b[0m");
-	printf("\x1b[2;0HClear the whole screen: \x1b[32mSelect\x1b[0m");
-	printf("\x1b[3;0HNavigate colors: \x1b[32mUp\x1b[0m or \x1b[32mDown\x1b[0m");
+	printf("\x1b[0;0HSwitch between Pen and Eraser: \x1b[36mA\x1b[0m");
+	printf("\x1b[2;0HClear the whole screen: \x1b[36mSelect\x1b[0m");
+	printf("\x1b[3;0HNavigate colors: \x1b[36mUp\x1b[0m or \x1b[36mDown\x1b[0m");
 	printf("\x1b[30;3HPress \x1b[31mStart\x1b[0m to exit the application.");
 	
 	bool isPen = true;
@@ -29,7 +31,7 @@ int main(int argc, char **argv)
 	{
 		hidScanInput();
 		kDown = hidKeysDown();
-
+		
 		if (kDown & KEY_START) break;
 		if (kDown & KEY_A) isPen = !isPen;
 		if (kDown & KEY_DOWN)
@@ -55,7 +57,7 @@ int main(int argc, char **argv)
 		}
 		
 		consoleSelect(&bottomScreen);
-		printf("\x1b[5;0HCurrent Mode: %s", isPen ? "\x1b[36mPen   \x1b[0m" : "\x1b[35mEraser\x1b[0m");
+		printf("\x1b[5;0HCurrent Mode: %s", isPen ? "\x1b[32mPen   \x1b[0m" : "\x1b[31mEraser\x1b[0m");
 		printf("\x1b[6;0HCurrent Color: \x1b[%dm \x1b[0m", color);
 
 		consoleSelect(&topScreen);
@@ -70,6 +72,8 @@ int main(int argc, char **argv)
 		gspWaitForVBlank();
 	}
 
+	mcuHwcExit();
+	hidExit();
 	gfxExit();
 	return 0;
 }
