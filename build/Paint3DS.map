@@ -329,6 +329,8 @@ Discarded input sections
                 0x00000000       0x14 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
  .text.gfxGetScreenFormat
                 0x00000000       0x10 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
+ .text.gfxInitDefault
+                0x00000000       0x10 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
  .text.gfxScreenSwapBuffers
                 0x00000000       0x30 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
  .text.gfxConfigScreen
@@ -1944,47 +1946,44 @@ Linker script and memory map
  .text.frame_dummy
                 0x0010091c       0x2c C:/devkitPro/devkitARM/bin/../lib/gcc/arm-none-eabi/14.2.0/armv6k/fpu/crtbegin.o
  .text.startup.main
-                0x00100948      0x244 main.o
+                0x00100948      0x254 main.o
                 0x00100948                main
  .text.consoleHandleColorEsc
-                0x00100b8c      0x51c C:/devkitPro/libctru/lib\libctru.a(console.o)
+                0x00100b9c      0x51c C:/devkitPro/libctru/lib\libctru.a(console.o)
  .text.consoleColorStateShift
-                0x001010a8       0xb8 C:/devkitPro/libctru/lib\libctru.a(console.o)
+                0x001010b8       0xb8 C:/devkitPro/libctru/lib\libctru.a(console.o)
  .text.consoleSelect
-                0x00101160       0x18 C:/devkitPro/libctru/lib\libctru.a(console.o)
-                0x00101160                consoleSelect
+                0x00101170       0x18 C:/devkitPro/libctru/lib\libctru.a(console.o)
+                0x00101170                consoleSelect
  .text.consoleDrawChar
-                0x00101178      0x1ac C:/devkitPro/libctru/lib\libctru.a(console.o)
-                0x00101178                consoleDrawChar
+                0x00101188      0x1ac C:/devkitPro/libctru/lib\libctru.a(console.o)
+                0x00101188                consoleDrawChar
  .text.consolePrintChar
-                0x00101324      0x124 C:/devkitPro/libctru/lib\libctru.a(console.o)
-                0x00101324                consolePrintChar
+                0x00101334      0x124 C:/devkitPro/libctru/lib\libctru.a(console.o)
+                0x00101334                consolePrintChar
  .text.con_write
-                0x00101448      0x6f4 C:/devkitPro/libctru/lib\libctru.a(console.o)
-                0x00101448                con_write
- .text.newRow   0x00101b3c       0xfc C:/devkitPro/libctru/lib\libctru.a(console.o)
+                0x00101458      0x6f4 C:/devkitPro/libctru/lib\libctru.a(console.o)
+                0x00101458                con_write
+ .text.newRow   0x00101b4c       0xfc C:/devkitPro/libctru/lib\libctru.a(console.o)
  .text.consoleInit
-                0x00101c38      0x18c C:/devkitPro/libctru/lib\libctru.a(console.o)
-                0x00101c38                consoleInit
+                0x00101c48      0x18c C:/devkitPro/libctru/lib\libctru.a(console.o)
+                0x00101c48                consoleInit
  .text.consoleClear
-                0x00101dc4       0xb8 C:/devkitPro/libctru/lib\libctru.a(console.o)
-                0x00101dc4                consoleClear
+                0x00101dd4       0xb8 C:/devkitPro/libctru/lib\libctru.a(console.o)
+                0x00101dd4                consoleClear
  .text.gfxPresentFramebuffer
-                0x00101e7c       0xd0 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
+                0x00101e8c       0xd0 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
  .text.gfxIsWide
-                0x00101f4c       0x1c C:/devkitPro/libctru/lib\libctru.a(gfx.o)
-                0x00101f4c                gfxIsWide
+                0x00101f5c       0x1c C:/devkitPro/libctru/lib\libctru.a(gfx.o)
+                0x00101f5c                gfxIsWide
  .text.gfxSetScreenFormat
-                0x00101f68       0xec C:/devkitPro/libctru/lib\libctru.a(gfx.o)
-                0x00101f68                gfxSetScreenFormat
+                0x00101f78       0xec C:/devkitPro/libctru/lib\libctru.a(gfx.o)
+                0x00101f78                gfxSetScreenFormat
  .text.gfxSetDoubleBuffering
-                0x00102054       0x10 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
-                0x00102054                gfxSetDoubleBuffering
- .text.gfxInit  0x00102064       0xe0 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
-                0x00102064                gfxInit
- .text.gfxInitDefault
-                0x00102144       0x10 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
-                0x00102144                gfxInitDefault
+                0x00102064       0x10 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
+                0x00102064                gfxSetDoubleBuffering
+ .text.gfxInit  0x00102074       0xe0 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
+                0x00102074                gfxInit
  .text.gfxExit  0x00102154       0xb4 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
                 0x00102154                gfxExit
  .text.gfxGetFramebuffer
@@ -3548,53 +3547,53 @@ Linker script and memory map
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000    0x2e5cd
+.debug_info     0x00000000    0x2e62d
  *(.debug_info)
- .debug_info    0x00000000      0x849 main.o
- .debug_info    0x00000849     0x21f3 C:/devkitPro/libctru/lib\libctru.a(console.o)
- .debug_info    0x00002a3c      0xcfb C:/devkitPro/libctru/lib\libctru.a(gfx.o)
- .debug_info    0x00003737     0x5593 C:/devkitPro/libctru/lib\libctru.a(apt.o)
- .debug_info    0x00008cca     0x5c04 C:/devkitPro/libctru/lib\libctru.a(gspgpu.o)
- .debug_info    0x0000e8ce     0x13d8 C:/devkitPro/libctru/lib\libctru.a(hid.o)
- .debug_info    0x0000fca6      0xafc C:/devkitPro/libctru/lib\libctru.a(irrst.o)
- .debug_info    0x000107a2      0x9ac C:/devkitPro/libctru/lib\libctru.a(mcuhwc.o)
- .debug_info    0x0001114e      0x185 C:/devkitPro/libctru/lib\libctru.a(ctru_init.o)
- .debug_info    0x000112d3      0x2bc C:/devkitPro/libctru/lib\libctru.a(initArgv.o)
- .debug_info    0x0001158f     0x1765 C:/devkitPro/libctru/lib\libctru.a(syscalls.o)
- .debug_info    0x00012cf4       0x23 C:/devkitPro/libctru/lib\libctru.a(svc.o)
- .debug_info    0x00012d17       0x23 C:/devkitPro/libctru/lib\libctru.a(stack_adjust.o)
- .debug_info    0x00012d3a     0x1155 C:/devkitPro/libctru/lib\libctru.a(linear.o)
- .debug_info    0x00013e8f     0x1001 C:/devkitPro/libctru/lib\libctru.a(mem_pool.o)
- .debug_info    0x00014e90     0x173a C:/devkitPro/libctru/lib\libctru.a(vram.o)
- .debug_info    0x000165ca      0xa42 C:/devkitPro/libctru/lib\libctru.a(3dslink.o)
- .debug_info    0x0001700c      0x2a9 C:/devkitPro/libctru/lib\libctru.a(env.o)
- .debug_info    0x000172b5      0x6cc C:/devkitPro/libctru/lib\libctru.a(os.o)
- .debug_info    0x00017981     0x1af2 C:/devkitPro/libctru/lib\libctru.a(srv.o)
- .debug_info    0x00019473     0x2956 C:/devkitPro/libctru/lib\libctru.a(synchronization.o)
- .debug_info    0x0001bdc9     0x1152 C:/devkitPro/libctru/lib\libctru.a(thread.o)
- .debug_info    0x0001cf1b      0x36d C:/devkitPro/libctru/lib\libctru.a(mappable.o)
- .debug_info    0x0001d288      0xb06 C:/devkitPro/libctru/lib\libctru.a(ptmsysm.o)
- .debug_info    0x0001dd8e      0x872 C:/devkitPro/libctru/lib\libctru.a(srvpm.o)
- .debug_info    0x0001e600      0x1e0 C:/devkitPro/libctru/lib\libctru.a(rbtree_find.o)
- .debug_info    0x0001e7e0      0x17c C:/devkitPro/libctru/lib\libctru.a(rbtree_init.o)
- .debug_info    0x0001e95c      0x667 C:/devkitPro/libctru/lib\libctru.a(rbtree_insert.o)
- .debug_info    0x0001efc3      0x960 C:/devkitPro/libctru/lib\libctru.a(rbtree_remove.o)
- .debug_info    0x0001f923      0x358 C:/devkitPro/libctru/lib\libctru.a(rbtree_rotate.o)
- .debug_info    0x0001fc7b      0x529 C:/devkitPro/libctru/lib\libctru.a(allocateHeaps.o)
- .debug_info    0x000201a4      0x13d C:/devkitPro/libctru/lib\libctru.a(appExit.o)
- .debug_info    0x000202e1      0x148 C:/devkitPro/libctru/lib\libctru.a(appInit.o)
- .debug_info    0x00020429      0x2b7 C:/devkitPro/libctru/lib\libctru.a(ctru_exit.o)
- .debug_info    0x000206e0     0x42b1 C:/devkitPro/libctru/lib\libctru.a(archive_dev.o)
- .debug_info    0x00024991       0xd7 C:/devkitPro/libctru/lib\libctru.a(path_buf.o)
- .debug_info    0x00024a68     0x8f48 C:/devkitPro/libctru/lib\libctru.a(fs.o)
- .debug_info    0x0002d9b0      0x351 C:/devkitPro/libctru/lib\libctru.a(rbtree_iterator.o)
- .debug_info    0x0002dd01      0x158 C:/devkitPro/libctru/lib\libctru.a(decode_utf8.o)
- .debug_info    0x0002de59      0x205 C:/devkitPro/libctru/lib\libctru.a(utf16_to_utf8.o)
- .debug_info    0x0002e05e      0x205 C:/devkitPro/libctru/lib\libctru.a(utf8_to_utf16.o)
- .debug_info    0x0002e263       0x24 C:/devkitPro/libctru/lib\libctru.a(readtp.o)
- .debug_info    0x0002e287      0x134 C:/devkitPro/libctru/lib\libctru.a(decode_utf16.o)
- .debug_info    0x0002e3bb      0x109 C:/devkitPro/libctru/lib\libctru.a(encode_utf16.o)
- .debug_info    0x0002e4c4      0x109 C:/devkitPro/libctru/lib\libctru.a(encode_utf8.o)
+ .debug_info    0x00000000      0x8a9 main.o
+ .debug_info    0x000008a9     0x21f3 C:/devkitPro/libctru/lib\libctru.a(console.o)
+ .debug_info    0x00002a9c      0xcfb C:/devkitPro/libctru/lib\libctru.a(gfx.o)
+ .debug_info    0x00003797     0x5593 C:/devkitPro/libctru/lib\libctru.a(apt.o)
+ .debug_info    0x00008d2a     0x5c04 C:/devkitPro/libctru/lib\libctru.a(gspgpu.o)
+ .debug_info    0x0000e92e     0x13d8 C:/devkitPro/libctru/lib\libctru.a(hid.o)
+ .debug_info    0x0000fd06      0xafc C:/devkitPro/libctru/lib\libctru.a(irrst.o)
+ .debug_info    0x00010802      0x9ac C:/devkitPro/libctru/lib\libctru.a(mcuhwc.o)
+ .debug_info    0x000111ae      0x185 C:/devkitPro/libctru/lib\libctru.a(ctru_init.o)
+ .debug_info    0x00011333      0x2bc C:/devkitPro/libctru/lib\libctru.a(initArgv.o)
+ .debug_info    0x000115ef     0x1765 C:/devkitPro/libctru/lib\libctru.a(syscalls.o)
+ .debug_info    0x00012d54       0x23 C:/devkitPro/libctru/lib\libctru.a(svc.o)
+ .debug_info    0x00012d77       0x23 C:/devkitPro/libctru/lib\libctru.a(stack_adjust.o)
+ .debug_info    0x00012d9a     0x1155 C:/devkitPro/libctru/lib\libctru.a(linear.o)
+ .debug_info    0x00013eef     0x1001 C:/devkitPro/libctru/lib\libctru.a(mem_pool.o)
+ .debug_info    0x00014ef0     0x173a C:/devkitPro/libctru/lib\libctru.a(vram.o)
+ .debug_info    0x0001662a      0xa42 C:/devkitPro/libctru/lib\libctru.a(3dslink.o)
+ .debug_info    0x0001706c      0x2a9 C:/devkitPro/libctru/lib\libctru.a(env.o)
+ .debug_info    0x00017315      0x6cc C:/devkitPro/libctru/lib\libctru.a(os.o)
+ .debug_info    0x000179e1     0x1af2 C:/devkitPro/libctru/lib\libctru.a(srv.o)
+ .debug_info    0x000194d3     0x2956 C:/devkitPro/libctru/lib\libctru.a(synchronization.o)
+ .debug_info    0x0001be29     0x1152 C:/devkitPro/libctru/lib\libctru.a(thread.o)
+ .debug_info    0x0001cf7b      0x36d C:/devkitPro/libctru/lib\libctru.a(mappable.o)
+ .debug_info    0x0001d2e8      0xb06 C:/devkitPro/libctru/lib\libctru.a(ptmsysm.o)
+ .debug_info    0x0001ddee      0x872 C:/devkitPro/libctru/lib\libctru.a(srvpm.o)
+ .debug_info    0x0001e660      0x1e0 C:/devkitPro/libctru/lib\libctru.a(rbtree_find.o)
+ .debug_info    0x0001e840      0x17c C:/devkitPro/libctru/lib\libctru.a(rbtree_init.o)
+ .debug_info    0x0001e9bc      0x667 C:/devkitPro/libctru/lib\libctru.a(rbtree_insert.o)
+ .debug_info    0x0001f023      0x960 C:/devkitPro/libctru/lib\libctru.a(rbtree_remove.o)
+ .debug_info    0x0001f983      0x358 C:/devkitPro/libctru/lib\libctru.a(rbtree_rotate.o)
+ .debug_info    0x0001fcdb      0x529 C:/devkitPro/libctru/lib\libctru.a(allocateHeaps.o)
+ .debug_info    0x00020204      0x13d C:/devkitPro/libctru/lib\libctru.a(appExit.o)
+ .debug_info    0x00020341      0x148 C:/devkitPro/libctru/lib\libctru.a(appInit.o)
+ .debug_info    0x00020489      0x2b7 C:/devkitPro/libctru/lib\libctru.a(ctru_exit.o)
+ .debug_info    0x00020740     0x42b1 C:/devkitPro/libctru/lib\libctru.a(archive_dev.o)
+ .debug_info    0x000249f1       0xd7 C:/devkitPro/libctru/lib\libctru.a(path_buf.o)
+ .debug_info    0x00024ac8     0x8f48 C:/devkitPro/libctru/lib\libctru.a(fs.o)
+ .debug_info    0x0002da10      0x351 C:/devkitPro/libctru/lib\libctru.a(rbtree_iterator.o)
+ .debug_info    0x0002dd61      0x158 C:/devkitPro/libctru/lib\libctru.a(decode_utf8.o)
+ .debug_info    0x0002deb9      0x205 C:/devkitPro/libctru/lib\libctru.a(utf16_to_utf8.o)
+ .debug_info    0x0002e0be      0x205 C:/devkitPro/libctru/lib\libctru.a(utf8_to_utf16.o)
+ .debug_info    0x0002e2c3       0x24 C:/devkitPro/libctru/lib\libctru.a(readtp.o)
+ .debug_info    0x0002e2e7      0x134 C:/devkitPro/libctru/lib\libctru.a(decode_utf16.o)
+ .debug_info    0x0002e41b      0x109 C:/devkitPro/libctru/lib\libctru.a(encode_utf16.o)
+ .debug_info    0x0002e524      0x109 C:/devkitPro/libctru/lib\libctru.a(encode_utf8.o)
 
 .debug_abbrev   0x00000000     0x740f
  *(.debug_abbrev)
@@ -3644,53 +3643,53 @@ Linker script and memory map
  .debug_abbrev  0x00007327       0x74 C:/devkitPro/libctru/lib\libctru.a(encode_utf16.o)
  .debug_abbrev  0x0000739b       0x74 C:/devkitPro/libctru/lib\libctru.a(encode_utf8.o)
 
-.debug_line     0x00000000    0x1e539
+.debug_line     0x00000000    0x1e546
  *(.debug_line)
- .debug_line    0x00000000      0x36e main.o
- .debug_line    0x0000036e     0x1476 C:/devkitPro/libctru/lib\libctru.a(console.o)
- .debug_line    0x000017e4      0x928 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
- .debug_line    0x0000210c     0x38eb C:/devkitPro/libctru/lib\libctru.a(apt.o)
- .debug_line    0x000059f7     0x3521 C:/devkitPro/libctru/lib\libctru.a(gspgpu.o)
- .debug_line    0x00008f18      0xf2b C:/devkitPro/libctru/lib\libctru.a(hid.o)
- .debug_line    0x00009e43      0x8ed C:/devkitPro/libctru/lib\libctru.a(irrst.o)
- .debug_line    0x0000a730      0x835 C:/devkitPro/libctru/lib\libctru.a(mcuhwc.o)
- .debug_line    0x0000af65      0x1d9 C:/devkitPro/libctru/lib\libctru.a(ctru_init.o)
- .debug_line    0x0000b13e      0x42c C:/devkitPro/libctru/lib\libctru.a(initArgv.o)
- .debug_line    0x0000b56a      0x995 C:/devkitPro/libctru/lib\libctru.a(syscalls.o)
- .debug_line    0x0000beff      0x78f C:/devkitPro/libctru/lib\libctru.a(svc.o)
- .debug_line    0x0000c68e       0x6f C:/devkitPro/libctru/lib\libctru.a(stack_adjust.o)
- .debug_line    0x0000c6fd      0x69e C:/devkitPro/libctru/lib\libctru.a(linear.o)
- .debug_line    0x0000cd9b      0x85c C:/devkitPro/libctru/lib\libctru.a(mem_pool.o)
- .debug_line    0x0000d5f7      0x8d3 C:/devkitPro/libctru/lib\libctru.a(vram.o)
- .debug_line    0x0000deca      0x443 C:/devkitPro/libctru/lib\libctru.a(3dslink.o)
- .debug_line    0x0000e30d      0x273 C:/devkitPro/libctru/lib\libctru.a(env.o)
- .debug_line    0x0000e580      0x4b3 C:/devkitPro/libctru/lib\libctru.a(os.o)
- .debug_line    0x0000ea33      0xff5 C:/devkitPro/libctru/lib\libctru.a(srv.o)
- .debug_line    0x0000fa28     0x1654 C:/devkitPro/libctru/lib\libctru.a(synchronization.o)
- .debug_line    0x0001107c      0x6b3 C:/devkitPro/libctru/lib\libctru.a(thread.o)
- .debug_line    0x0001172f      0x301 C:/devkitPro/libctru/lib\libctru.a(mappable.o)
- .debug_line    0x00011a30      0xa06 C:/devkitPro/libctru/lib\libctru.a(ptmsysm.o)
- .debug_line    0x00012436      0x6bb C:/devkitPro/libctru/lib\libctru.a(srvpm.o)
- .debug_line    0x00012af1      0x256 C:/devkitPro/libctru/lib\libctru.a(rbtree_find.o)
- .debug_line    0x00012d47      0x1f7 C:/devkitPro/libctru/lib\libctru.a(rbtree_init.o)
- .debug_line    0x00012f3e      0x5f1 C:/devkitPro/libctru/lib\libctru.a(rbtree_insert.o)
- .debug_line    0x0001352f      0x7e8 C:/devkitPro/libctru/lib\libctru.a(rbtree_remove.o)
- .debug_line    0x00013d17      0x331 C:/devkitPro/libctru/lib\libctru.a(rbtree_rotate.o)
- .debug_line    0x00014048      0x35c C:/devkitPro/libctru/lib\libctru.a(allocateHeaps.o)
- .debug_line    0x000143a4      0x249 C:/devkitPro/libctru/lib\libctru.a(appExit.o)
- .debug_line    0x000145ed      0x246 C:/devkitPro/libctru/lib\libctru.a(appInit.o)
- .debug_line    0x00014833      0x1cb C:/devkitPro/libctru/lib\libctru.a(ctru_exit.o)
- .debug_line    0x000149fe     0x1d61 C:/devkitPro/libctru/lib\libctru.a(archive_dev.o)
- .debug_line    0x0001675f      0x11d C:/devkitPro/libctru/lib\libctru.a(path_buf.o)
- .debug_line    0x0001687c     0x6c10 C:/devkitPro/libctru/lib\libctru.a(fs.o)
- .debug_line    0x0001d48c      0x30a C:/devkitPro/libctru/lib\libctru.a(rbtree_iterator.o)
- .debug_line    0x0001d796      0x281 C:/devkitPro/libctru/lib\libctru.a(decode_utf8.o)
- .debug_line    0x0001da17      0x2d9 C:/devkitPro/libctru/lib\libctru.a(utf16_to_utf8.o)
- .debug_line    0x0001dcf0      0x2ac C:/devkitPro/libctru/lib\libctru.a(utf8_to_utf16.o)
- .debug_line    0x0001df9c       0x49 C:/devkitPro/libctru/lib\libctru.a(readtp.o)
- .debug_line    0x0001dfe5      0x1a2 C:/devkitPro/libctru/lib\libctru.a(decode_utf16.o)
- .debug_line    0x0001e187      0x190 C:/devkitPro/libctru/lib\libctru.a(encode_utf16.o)
- .debug_line    0x0001e317      0x222 C:/devkitPro/libctru/lib\libctru.a(encode_utf8.o)
+ .debug_line    0x00000000      0x37b main.o
+ .debug_line    0x0000037b     0x1476 C:/devkitPro/libctru/lib\libctru.a(console.o)
+ .debug_line    0x000017f1      0x928 C:/devkitPro/libctru/lib\libctru.a(gfx.o)
+ .debug_line    0x00002119     0x38eb C:/devkitPro/libctru/lib\libctru.a(apt.o)
+ .debug_line    0x00005a04     0x3521 C:/devkitPro/libctru/lib\libctru.a(gspgpu.o)
+ .debug_line    0x00008f25      0xf2b C:/devkitPro/libctru/lib\libctru.a(hid.o)
+ .debug_line    0x00009e50      0x8ed C:/devkitPro/libctru/lib\libctru.a(irrst.o)
+ .debug_line    0x0000a73d      0x835 C:/devkitPro/libctru/lib\libctru.a(mcuhwc.o)
+ .debug_line    0x0000af72      0x1d9 C:/devkitPro/libctru/lib\libctru.a(ctru_init.o)
+ .debug_line    0x0000b14b      0x42c C:/devkitPro/libctru/lib\libctru.a(initArgv.o)
+ .debug_line    0x0000b577      0x995 C:/devkitPro/libctru/lib\libctru.a(syscalls.o)
+ .debug_line    0x0000bf0c      0x78f C:/devkitPro/libctru/lib\libctru.a(svc.o)
+ .debug_line    0x0000c69b       0x6f C:/devkitPro/libctru/lib\libctru.a(stack_adjust.o)
+ .debug_line    0x0000c70a      0x69e C:/devkitPro/libctru/lib\libctru.a(linear.o)
+ .debug_line    0x0000cda8      0x85c C:/devkitPro/libctru/lib\libctru.a(mem_pool.o)
+ .debug_line    0x0000d604      0x8d3 C:/devkitPro/libctru/lib\libctru.a(vram.o)
+ .debug_line    0x0000ded7      0x443 C:/devkitPro/libctru/lib\libctru.a(3dslink.o)
+ .debug_line    0x0000e31a      0x273 C:/devkitPro/libctru/lib\libctru.a(env.o)
+ .debug_line    0x0000e58d      0x4b3 C:/devkitPro/libctru/lib\libctru.a(os.o)
+ .debug_line    0x0000ea40      0xff5 C:/devkitPro/libctru/lib\libctru.a(srv.o)
+ .debug_line    0x0000fa35     0x1654 C:/devkitPro/libctru/lib\libctru.a(synchronization.o)
+ .debug_line    0x00011089      0x6b3 C:/devkitPro/libctru/lib\libctru.a(thread.o)
+ .debug_line    0x0001173c      0x301 C:/devkitPro/libctru/lib\libctru.a(mappable.o)
+ .debug_line    0x00011a3d      0xa06 C:/devkitPro/libctru/lib\libctru.a(ptmsysm.o)
+ .debug_line    0x00012443      0x6bb C:/devkitPro/libctru/lib\libctru.a(srvpm.o)
+ .debug_line    0x00012afe      0x256 C:/devkitPro/libctru/lib\libctru.a(rbtree_find.o)
+ .debug_line    0x00012d54      0x1f7 C:/devkitPro/libctru/lib\libctru.a(rbtree_init.o)
+ .debug_line    0x00012f4b      0x5f1 C:/devkitPro/libctru/lib\libctru.a(rbtree_insert.o)
+ .debug_line    0x0001353c      0x7e8 C:/devkitPro/libctru/lib\libctru.a(rbtree_remove.o)
+ .debug_line    0x00013d24      0x331 C:/devkitPro/libctru/lib\libctru.a(rbtree_rotate.o)
+ .debug_line    0x00014055      0x35c C:/devkitPro/libctru/lib\libctru.a(allocateHeaps.o)
+ .debug_line    0x000143b1      0x249 C:/devkitPro/libctru/lib\libctru.a(appExit.o)
+ .debug_line    0x000145fa      0x246 C:/devkitPro/libctru/lib\libctru.a(appInit.o)
+ .debug_line    0x00014840      0x1cb C:/devkitPro/libctru/lib\libctru.a(ctru_exit.o)
+ .debug_line    0x00014a0b     0x1d61 C:/devkitPro/libctru/lib\libctru.a(archive_dev.o)
+ .debug_line    0x0001676c      0x11d C:/devkitPro/libctru/lib\libctru.a(path_buf.o)
+ .debug_line    0x00016889     0x6c10 C:/devkitPro/libctru/lib\libctru.a(fs.o)
+ .debug_line    0x0001d499      0x30a C:/devkitPro/libctru/lib\libctru.a(rbtree_iterator.o)
+ .debug_line    0x0001d7a3      0x281 C:/devkitPro/libctru/lib\libctru.a(decode_utf8.o)
+ .debug_line    0x0001da24      0x2d9 C:/devkitPro/libctru/lib\libctru.a(utf16_to_utf8.o)
+ .debug_line    0x0001dcfd      0x2ac C:/devkitPro/libctru/lib\libctru.a(utf8_to_utf16.o)
+ .debug_line    0x0001dfa9       0x49 C:/devkitPro/libctru/lib\libctru.a(readtp.o)
+ .debug_line    0x0001dff2      0x1a2 C:/devkitPro/libctru/lib\libctru.a(decode_utf16.o)
+ .debug_line    0x0001e194      0x190 C:/devkitPro/libctru/lib\libctru.a(encode_utf16.o)
+ .debug_line    0x0001e324      0x222 C:/devkitPro/libctru/lib\libctru.a(encode_utf8.o)
 
 .debug_frame    0x00000000     0x3fcc
  *(.debug_frame)
@@ -3742,7 +3741,7 @@ Linker script and memory map
 .debug_str      0x00000000     0x8ae6
  *(.debug_str)
  .debug_str     0x00000000     0x8ae6 main.o
-                                0x5fe (size before relaxing)
+                                0x658 (size before relaxing)
  .debug_str     0x00008ae6      0xfc8 C:/devkitPro/libctru/lib\libctru.a(console.o)
  .debug_str     0x00008ae6      0x6dd C:/devkitPro/libctru/lib\libctru.a(gfx.o)
  .debug_str     0x00008ae6     0x1b90 C:/devkitPro/libctru/lib\libctru.a(apt.o)

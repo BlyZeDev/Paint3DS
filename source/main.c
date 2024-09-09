@@ -7,7 +7,7 @@ int main(int argc, char **argv)
 	const int MIN_COLOR = 41;
 	const int MAX_COLOR = 47;
 	
-	gfxInitDefault();
+	gfxInit(GSP_RGB565_OES, GSP_RGB565_OES, false);
 	hidInit();
 	mcuHwcInit();
 
@@ -71,7 +71,7 @@ int main(int argc, char **argv)
 		gfxSwapBuffers();
 		gspWaitForVBlank();
 	}
-
+	
 	mcuHwcExit();
 	hidExit();
 	gfxExit();
