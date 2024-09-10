@@ -130,6 +130,8 @@ void advancedMode(PrintConsole* topScreen)
 	C2D_TargetClear(bottom, clrClear);
 
 	printControls(topScreen);
+	printf("\x1b[5;0HCurrent Mode: ");
+	printf("\x1b[6;0HCurrent Color");
 
 	bool isPen = true;
 	u8 selectedColorIndex = 0;
@@ -204,14 +206,13 @@ void advancedMode(PrintConsole* topScreen)
 		
 		C3D_FrameEnd(0);
 
-		printf("\x1b[5;0HCurrent Mode: %s", isPen ? "\x1b[32mPen   \x1b[0m" : "\x1b[31mEraser\x1b[0m");
-		printf("\x1b[6;0HCurrent Color");
+		printf("\x1b[5;15H%s", isPen ? "\x1b[32mPen   \x1b[0m" : "\x1b[31mEraser\x1b[0m");
 		printf("\x1b[%d;0H ", prevSelectedColorIndex + 7);
 		printf("\x1b[%d;0H>", selectedColorIndex + 7);
 
-		printf("\x1b[7;2H\x1b[31m%u\x1b[0m", color.R);
-		printf("\x1b[8;2H\x1b[32m%u\x1b[0m", color.G);
-		printf("\x1b[9;2H\x1b[33m%u\x1b[0m", color.B);
+		printf("\x1b[7;2H\x1b[31m%u  \x1b[0m", color.R);
+		printf("\x1b[8;2H\x1b[32m%u  \x1b[0m", color.G);
+		printf("\x1b[9;2H\x1b[34m%u  \x1b[0m", color.B);
 
 		prevTouch = currentTouch;
 	}
