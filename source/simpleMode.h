@@ -5,6 +5,6 @@ void drawLine(u16 startX, u16 startY, u16 endX, u16 endY, int color);
 
 void printSimpleControls();
 
-void simpleMode(PrintConsole* topScreen);
+void simpleMode(PrintConsole* topScreenPtr);
 
 #endif

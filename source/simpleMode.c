@@ -48,7 +48,7 @@ void printSimpleControls()
 	printf("\x1b[30;8HPress \x1b[31mStart\x1b[0m to exit the application");
 }
 
-void simpleMode(PrintConsole* topScreen)
+void simpleMode(PrintConsole* topScreenPtr)
 {
 	const int MIN_COLOR = 41;
 	const int MAX_COLOR = 47;
@@ -57,8 +57,8 @@ void simpleMode(PrintConsole* topScreen)
 	
 	consoleInit(GFX_BOTTOM, &bottomScreen);
 	
-	consoleSelect(topScreen);
-	printSimpleControls(topScreen);
+	consoleSelect(topScreenPtr);
+	printSimpleControls(topScreenPtr);
 
 	bool isPen = true;
 	int color = MAX_COLOR;
@@ -96,7 +96,7 @@ void simpleMode(PrintConsole* topScreen)
 				(int)(currentTouch.py / 7.5), (int)(currentTouch.px / 7.5), isPen ? color : 40);
 		}
 
-		consoleSelect(topScreen);
+		consoleSelect(topScreenPtr);
 		printf("\x1b[5;0HCurrent Mode: %s", isPen ? "\x1b[32mPen   \x1b[0m" : "\x1b[31mEraser\x1b[0m");
 		printf("\x1b[6;0HCurrent Color: \x1b[%dm \x1b[0m", color);
 
