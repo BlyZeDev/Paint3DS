@@ -34,10 +34,10 @@
 001008bc 00000020 T __aeabi_uidivmod
 001008dc t __do_global_dtors_aux
 0010091c t frame_dummy
-00100948 0000058c T advancedMode
-00100ed4 000000a0 T main
-00100f74 000000c0 T drawLine
-00101034 00000038 T printSimpleControls
+00100948 00000590 T advancedMode
+00100ed8 000000a0 T main
+00100f78 000000c0 T drawLine
+00101038 00000038 T printSimpleControls
 00101070 00000218 T simpleMode
 00101288 00000044 t C2Di_FrameEndHook
 001012d0 0000036c T C2D_Init

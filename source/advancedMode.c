@@ -55,10 +55,7 @@ void advancedMode(PrintConsole* topScreen)
 	bool isPen = true;
 	u8 selectedColorIndex = 0;
 	u8 prevSelectedColorIndex = 1;
-	color_rgb color;
-	color.R = 255;
-	color.G = 255;
-	color.B = 255;
+	color_rgb color = { 255, 255, 255 };
 
 	u32 clrDraw = C2D_Color32(color.R, color.G, color.B, 0xFF);
 	
@@ -108,8 +105,9 @@ void advancedMode(PrintConsole* topScreen)
 			C2D_DrawLine(prevTouch.px, prevTouch.py, clrDraw,
 				currentTouch.px, currentTouch.py, clrDraw, currentPenSize, 0);
 
-			C2D_DrawEllipseSolid(currentTouch.px - currentPenSize / 2, currentTouch.py - currentPenSize / 2, 0,
-				currentPenSize, currentPenSize, clrDraw);
+			C2D_DrawEllipseSolid(
+				currentTouch.px - currentPenSize / 2, currentTouch.py - currentPenSize / 2, 0,
+				currentPenSize - (currentPenSize % 2), currentPenSize - (currentPenSize % 2), clrDraw);
 		}
 		
 		C3D_FrameEnd(0);
