@@ -53,10 +53,6 @@ BANNER_IMAGE        :=	assets/banner.png
 
 RSF_PATH            :=	assets/app.rsf
 
-# If left blank, makerom will use the default Homebrew logo
-LOGO                :=	assets/logo.bin
-
-
 # If left blank, makerom will use default values (0xff3ff and CTR-P-CTAP, respectively)
 # Be careful if UNIQUE_ID is the same as other apps: it will overwrite the previously installed one
 UNIQUE_ID           :=	0xABBA0
