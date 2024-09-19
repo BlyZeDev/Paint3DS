@@ -128,6 +128,7 @@ void advancedMode(PrintConsole* topScreenPtr)
 		prevTouch = currentTouch;
 	}
 
+	C3D_RenderTargetDelete(bottomPtr);
 	C2D_Fini();
 	C3D_Fini();
 }

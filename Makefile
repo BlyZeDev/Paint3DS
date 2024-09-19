@@ -31,15 +31,39 @@ include $(DEVKITARM)/3ds_rules
 #     - icon.png
 #     - <libctru folder>/default_icon.png
 #---------------------------------------------------------------------------------
+APP_TITLE           :=	Paint3DS
+APP_DESCRIPTION     :=	Paint cool things on your 3DS
+APP_AUTHOR          :=	BlyZe
+
 TARGET		:=	$(notdir $(CURDIR))
 BUILD		:=	build
 SOURCES		:=	source
 DATA		:=	data
 INCLUDES	:=	include
 GRAPHICS	:=	gfx
-GFXBUILD	:=	$(BUILD)
 ROMFS		:=	romfs
 GFXBUILD	:=	$(ROMFS)/gfx
+
+# Path to the files
+# If left blank, will try to use "icon.png", "$(TARGET).png", or the default ctrulib icon, in that order
+ICON                :=	assets/icon.png
+
+BANNER_AUDIO        :=	assets/audio.wav
+BANNER_IMAGE        :=	assets/banner.png
+
+RSF_PATH            :=	assets/app.rsf
+
+# If left blank, makerom will use the default Homebrew logo
+LOGO                :=	assets/logo.bin
+
+
+# If left blank, makerom will use default values (0xff3ff and CTR-P-CTAP, respectively)
+# Be careful if UNIQUE_ID is the same as other apps: it will overwrite the previously installed one
+UNIQUE_ID           :=	0xABBA0
+PRODUCT_CODE        :=	CTR-P-BPAI
+
+# Don't really need to change this
+ICON_FLAGS          :=	nosavebackups,visible
 
 #---------------------------------------------------------------------------------
 # options for code generation
@@ -50,7 +74,7 @@ CFLAGS	:=	-g -Wall -O2 -mword-relocations \
 			-ffunction-sections \
 			$(ARCH)
 
-CFLAGS	+=	$(INCLUDE) -D__3DS__
+CFLAGS	+=	$(INCLUDE) -D__3DS__ -D_GNU_SOURCE -DVERSION="\"$(VERSION)\"" -DUSER_AGENT="\"$(APP_TITLE)/$(VERSION)\"" -DAPP_TITLE="\"$(APP_TITLE)\""
 
 CXXFLAGS	:= $(CFLAGS) -fno-rtti -fno-exceptions -std=gnu++11
 
@@ -161,8 +185,37 @@ endif
 .PHONY: all clean
 
 #---------------------------------------------------------------------------------
-all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES)
+MAKEROM		?=	makerom
+
+MAKEROM_ARGS		:=	-elf "$(OUTPUT).elf" -rsf "$(RSF_PATH)" -banner "$(BUILD)/banner.bnr" -icon "$(BUILD)/icon.icn" -DAPP_TITLE="$(APP_TITLE)" -DAPP_PRODUCT_CODE="$(PRODUCT_CODE)" -DAPP_UNIQUE_ID="$(UNIQUE_ID)"
+
+ifneq ($(strip $(LOGO)),)
+	MAKEROM_ARGS	+=	 -logo "$(LOGO)"
+endif
+ifneq ($(strip $(ROMFS)),)
+	MAKEROM_ARGS	+=	 -DAPP_ROMFS="$(ROMFS)"
+endif
+
+BANNERTOOL	?=	bannertool
+
+ifeq ($(suffix $(BANNER_IMAGE)),.cgfx)
+	BANNER_IMAGE_ARG := -ci
+else
+	BANNER_IMAGE_ARG := -i
+endif
+
+ifeq ($(suffix $(BANNER_AUDIO)),.cwav)
+	BANNER_AUDIO_ARG := -ca
+else
+	BANNER_AUDIO_ARG := -a
+endif
+
+#---------------------------------------------------------------------------------
+all: $(BUILD) $(GFXBUILD) $(DEPSDIR) $(ROMFS_T3XFILES) $(T3XHFILES) $(OUTDIR)
 	@$(MAKE) --no-print-directory -C $(BUILD) -f $(CURDIR)/Makefile
+	@$(BANNERTOOL) makebanner $(BANNER_IMAGE_ARG) "$(BANNER_IMAGE)" $(BANNER_AUDIO_ARG) "$(BANNER_AUDIO)" -o "$(BUILD)/banner.bnr"
+	@$(BANNERTOOL) makesmdh -s "$(APP_TITLE)" -l "$(APP_DESCRIPTION)" -p "$(APP_AUTHOR)" -i "$(APP_ICON)" -f "$(ICON_FLAGS)" -o "$(BUILD)/icon.icn"
+	$(MAKEROM) -f cia -o "$(OUTPUT).cia" -target t -exefslogo $(MAKEROM_ARGS)
 
 $(BUILD):
 	@mkdir -p $@
@@ -179,8 +232,8 @@ endif
 
 #---------------------------------------------------------------------------------
 clean:
-	@echo clean ...
-	@rm -fr $(BUILD) $(TARGET).3dsx $(OUTPUT).smdh $(TARGET).elf $(GFXBUILD)
+	$(SILENTMSG) clean ...
+	@rm -fr $(BUILD) $(GFXBUILD) $(DEPSDIR) $(OUTDIR)
 
 #---------------------------------------------------------------------------------
 $(GFXBUILD)/%.t3x	$(BUILD)/%.h	:	%.t3s
