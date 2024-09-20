@@ -99,24 +99,24 @@ void advancedMode(PrintConsole* topScreenPtr)
 
 		C3D_FrameBegin(C3D_FRAME_SYNCDRAW);
 		C2D_SceneBegin(bottomPtr);
-
+		
 		if (kHeld & KEY_TOUCH)
 		{
 			hidTouchRead(&currentTouch);
 
-			C2D_DrawLine(prevTouch.px, prevTouch.py, clrDraw,
-				currentTouch.px, currentTouch.py, clrDraw, currentPenSize, 0);
-			
 			C2D_DrawEllipseSolid(
 				currentTouch.px - currentPenSize / 2, currentTouch.py - currentPenSize / 2, 0,
 				currentPenSize - (currentPenSize % 2), currentPenSize - (currentPenSize % 2), clrDraw);
+
+			C2D_DrawLine(prevTouch.px, prevTouch.py, clrDraw,
+				currentTouch.px, currentTouch.py, clrDraw, currentPenSize, 0);
 		}
 		
 		C3D_FrameEnd(0);
 
 		printf("\x1b[7;15H%s", isPen ? "\x1b[32mPen   \x1b[0m" : "\x1b[31mEraser\x1b[0m");
 
-		printf("\x1b[8;19H\x1b[31m%u  \x1b[0m", currentPenSize);
+		printf("\x1b[8;19H\x1b[36m%u  \x1b[0m", currentPenSize);
 
 		printf("\x1b[%d;0H ", prevSelectedColorIndex + 10);
 		printf("\x1b[%d;0H>", selectedColorIndex + 10);
